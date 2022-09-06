@@ -46,9 +46,26 @@ public class UserDaoService {
         while (iterator.hasNext()) {
             User user = iterator.next();
 
-            if( user.getId() == id) {
+            if (user.getId() == id) {
                 iterator.remove();
                 return user;
+            }
+        }
+
+        return null;
+    }
+
+    public User update(User user) {
+        Iterator<User> iterator = users.iterator();
+
+        int id = user.getId();
+        while (iterator.hasNext()) {
+            User updatedUser = iterator.next();
+
+            if (updatedUser.getId() == id) {
+                updatedUser.setName(user.getName());
+                updatedUser.setJoinDate(user.getJoinDate());
+                return updatedUser;
             }
         }
 
