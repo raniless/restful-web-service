@@ -1,5 +1,6 @@
 package com.example.restfulwebservice.user.controller;
 
+import com.example.restfulwebservice.user.entity.Post;
 import com.example.restfulwebservice.user.entity.User;
 import com.example.restfulwebservice.user.exception.UserNotFoundException;
 import com.example.restfulwebservice.user.dao.UserRepository;
@@ -58,5 +59,16 @@ public class UserJpaController {
                 .toUri();
 
         return ResponseEntity.created(location).build();
+    }
+
+    @GetMapping("/users/{id}/posts")
+    public List<Post> retrieveAllPostByUser(@PathVariable int id) {
+        Optional<User> user = userRepository.findById(id);
+
+        if(!user.isPresent()) {
+            throw new UserNotFoundException(String.format("ID[%s] not found", id));
+        }
+
+        return user.get().getPosts();
     }
 }
