@@ -1,11 +1,17 @@
 server:
   port: 8088
 
-#logging:
-#  level:
-#    org.springframework: DEBUG
+logging:
+  level:
+    org.springframework: DEBUG
 
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    defer-datasource-initialization: true
+
   messages:
     basename: messages
 
