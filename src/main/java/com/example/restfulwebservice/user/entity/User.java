@@ -1,4 +1,4 @@
-package com.example.restfulwebservice.user;
+package com.example.restfulwebservice.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
